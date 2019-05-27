@@ -1,10 +1,18 @@
 import React from 'react';
-import './App.css';
+import './app.css';
 
-function App() {
+import { ThemeProvider } from '@material-ui/styles';
+import themeContext from '../../context/theme.context'
+
+import Header from '../Header/Header';
+import HomecardList from '../HomecardList/HomecardList';
+
+function App () {
   return (
-    <div className="App">
-    </div>
+    <ThemeProvider theme={themeContext}>
+      <Header />
+      <HomecardList />
+    </ThemeProvider>
   );
 }
 
