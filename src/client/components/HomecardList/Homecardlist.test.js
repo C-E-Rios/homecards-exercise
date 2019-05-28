@@ -35,7 +35,7 @@ test ('HomecardList makes an API call and displays a list of homecards', async (
   });
 
   const {getByTestId, getByLabelText} = render (<HomecardList />);
-  const minimumPriceNode = getByLabelText (/Minimum price/i);
+  const minimumPriceNode = getByLabelText (/Minimum price per month/i);
 
   fireEvent.change (minimumPriceNode, {
     target: {value: minimumPrice},

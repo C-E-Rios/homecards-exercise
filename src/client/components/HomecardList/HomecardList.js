@@ -14,7 +14,6 @@ const INITIAL_STATE = {
   isFetching: false,
   homecards: null,
   error: null,
-  minimumPrice: 500,
 };
 
 function HomecardList () {
@@ -32,10 +31,7 @@ function HomecardList () {
 
   return (
     <React.Fragment>
-      <Filters
-        fetchData={fetchData}
-        minimumPrice={state.minimumPrice}
-      />
+      <Filters fetchData={fetchData} />
       <Main>
         {state.error
           ? <h1>{`Error: ${state.error.message}`}</h1>

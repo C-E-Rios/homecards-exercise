@@ -4,6 +4,10 @@ import propTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
 
+const INITIAL_STATE = {
+  minimumPrice: 500,
+};
+
 const Form = styled.form`
   text-align: right;
   position: relative;
@@ -11,11 +15,11 @@ const Form = styled.form`
   padding: 20px 30px;
 `;
 
-function Filters({fetchData, minimumPrice}) {
+function Filters({fetchData}) {
   const [isDirty, setIsDirty] = useState (false);
   const [filters, setFilters] = useReducer (
     (previousState, newState) => ({...previousState, ...newState}),
-    {minimumPrice}
+    INITIAL_STATE
   );
 
   function handleChange (event) {
@@ -38,7 +42,7 @@ function Filters({fetchData, minimumPrice}) {
       <TextField
         id="minimumPrice"
         data-testid="minimumPrice"
-        label="Minimum price"
+        label="Minimum price per month"
         value={filters.minimumPrice}
         onChange={handleChange}
         onBlur={handleBlur}
@@ -52,8 +56,7 @@ function Filters({fetchData, minimumPrice}) {
 }
 
 Filters.propTypes = {
-  fetchData: propTypes.func.isRequired,
-  minimumPrice: propTypes.number.isRequired,
+  fetchData: propTypes.func.isRequired
 };
 
 export default Filters;
