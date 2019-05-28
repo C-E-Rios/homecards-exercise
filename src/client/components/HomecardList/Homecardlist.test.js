@@ -34,16 +34,13 @@ test ('HomecardList makes an API call and displays a list of homecards', async (
     },
   });
 
-  const {getByTestId} = render (<HomecardList />);
-
-  const minimumPriceNode = getByTestId ('minimumPrice');
+  const {getByTestId, getByLabelText} = render (<HomecardList />);
+  const minimumPriceNode = getByLabelText (/Minimum price/i);
 
   fireEvent.change (minimumPriceNode, {
     target: {value: minimumPrice},
   });
-
-  fireEvent.blur (getByTestId ('minimumPrice'));
-
+  fireEvent.blur (minimumPriceNode);
   const homecards = await waitForElement (() => getByTestId ('homecards'));
 
   expect (axios.get).toHaveBeenCalledTimes (2); // Runs twice in dev mode?

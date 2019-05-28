@@ -7,7 +7,7 @@ function useHomecardList (INITIAL_STATE) {
     INITIAL_STATE
   );
 
-  async function fetchData (setState, minimumPrice) {
+  async function fetchData (minimumPrice) {
     setState ({isFetching: true, error: null, minimumPrice});
     try {
       const result = await axios.get (
@@ -30,7 +30,7 @@ function useHomecardList (INITIAL_STATE) {
       if (ref.current) {
         ref.current = true;
       } else {
-        fetchData (setState, INITIAL_STATE.minimumPrice);
+        fetchData (INITIAL_STATE.minimumPrice);
       }
     },
     [INITIAL_STATE.minimumPrice]

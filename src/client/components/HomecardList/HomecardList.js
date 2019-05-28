@@ -18,7 +18,7 @@ const INITIAL_STATE = {
 };
 
 function HomecardList () {
-  const {state, setState, fetchData} = useHomecardList (INITIAL_STATE);
+  const {state, fetchData} = useHomecardList (INITIAL_STATE);
   // const {header} = useTheme ();
 
   const Main = styled.main`
@@ -33,7 +33,7 @@ function HomecardList () {
   return (
     <React.Fragment>
       <Filters
-        fetchData={fetchData.bind (null, setState)}
+        fetchData={fetchData}
         minimumPrice={state.minimumPrice}
       />
       <Main>

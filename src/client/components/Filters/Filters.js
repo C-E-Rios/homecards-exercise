@@ -1,9 +1,7 @@
 import React, {useReducer, useState} from 'react';
 import propTypes from 'prop-types';
 
-// Causing issues with react-testing-library and fireEvent
-// import TextField from '@material-ui/core/TextField';
-
+import TextField from '@material-ui/core/TextField';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -37,7 +35,7 @@ function Filters({fetchData, minimumPrice}) {
 
   return (
     <Form name="filters" onSubmit={handleSubmit} noValidate>
-      <input
+      <TextField
         id="minimumPrice"
         data-testid="minimumPrice"
         label="Minimum price"
